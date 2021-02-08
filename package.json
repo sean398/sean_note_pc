@@ -1,21 +1,62 @@
 {
-  "name": "sean-test",
+  "name": "sean-note-for-pc",
   "version": "0.1.0",
   "private": true,
+  "main": "main.js",
+  "description": "sean note for pc",
+  "author": {
+    "name": "Guo haochuan",
+    "email": "guohaochuan5461@163.com"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.0",
+    "electron": "^11.2.3",
+    "electron-is-dev": "^1.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
+    "typescript": "^4.1.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-start": "electron .",
+    "dev": "concurrently \"wait-on http://localhost:3000 && electron .\" \"cross-env BROWSER=none npm start\""
+  },
+  "build": {
+    "appId": "sean-note-for-pc",
+    "productName": "小羊笔记",
+    "copyright": "Copyright © 2021 ${author}",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "./src/subwindow/**/*",
+      "main.js",
+      "./src/utils/data.js",
+      "./src/AppWindow.js"
+    ],
+    "win": {
+      "icon": "./Network.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./Network.ico",
+      "uninstallerIcon": "./Network.ico",
+      "installerHeaderIcon": "./Network.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "extends": null
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +75,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.3",
+    "wait-on": "^5.2.1"
   }
 }
