@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import classnames from "classnames";
 import { Avatar, Image, Modal } from "antd";
 import { user_detail } from "../../mock/userprofile";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";

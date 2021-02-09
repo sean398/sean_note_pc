@@ -1,0 +1,14 @@
+{
+    "id":12311,
+    "category":["plan","group1","group2"],
+    "list":[
+        {"name":"first file","id":1,"category":"plan"},
+        {"name":"first file","id":2,"category":"plan"},
+        {"name":"first file","id":3,"category":"group1"},
+        {"name":"first file","id":4,"category":"group1"},
+        {"name":"first file","id":5,"category":"group1"},
+        {"name":"first file","id":6,"category":"group2"},
+        {"name":"first file","id":7,"category":null}
+    ]    
+}
+  
