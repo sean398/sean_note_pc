@@ -1,0 +1,24 @@
+.sn-tab-list-wrapper {
+  background-color: #131415;
+  display: flex;
+  .sn-tab-list-item {
+    flex: 1;
+    max-width: 120px;
+    height: 35px;
+    line-height: 35px;
+    border-right: 1px solid #635d5d;
+    background-color: rgb(45, 45, 45);
+    padding: 0px 5px;
+    &.active {
+      color: rgb(45, 45, 45);
+      background-color: rgb(240, 242, 245);
+    }
+    .list-name {
+      padding: 0 10px;
+    }
+    .sn-fl-right {
+      margin-top: 12px;
+      margin-right: 10px;
+    }
+  }
+}

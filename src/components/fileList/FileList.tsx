@@ -8,7 +8,6 @@ const FileList = () => {
   const { category, list } = mockData;
 
   const unAssignedList = list.filter((item) => !item.category);
-  console.log(unAssignedList);
 
   return (
     <div className="sn-file-list-wrapper">

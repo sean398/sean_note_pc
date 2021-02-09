@@ -1,7 +1,6 @@
 import { Layout, Breadcrumb } from "antd";
 import { useState } from "react";
-import UserProfile from "./components/userProfile/UserProfile";
-import FileList from "./components/fileList/FileList";
+import { UserProfile, FileList, TabList } from "./components";
 import "./App.scss";
 import "antd/dist/antd.css";
 
@@ -20,12 +19,8 @@ const App = () => {
         <FileList />
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
-        <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+        <Content>
+          <TabList />
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
