@@ -9,7 +9,12 @@ const TabList = () => {
   const { list } = mockData;
   const [activeId, setActiveId] = useState(list[0].id);
 
-  const handleTabClick = (id: number) => {
+  const handleTabClick = (id: number, e: any) => {
+    if (e.button === 1) {
+      //鼠标中建 delete
+      return;
+    }
+
     setActiveId(id);
   };
 
@@ -23,7 +28,8 @@ const TabList = () => {
             })}
             key={item.id}
             data-id={item.id}
-            onClick={handleTabClick.bind(null, item.id)}
+            // onClick={handleTabClick.bind(null, item.id)}
+            onMouseDown={handleTabClick.bind(null, item.id)}
           >
             <FileMarkdownOutlined />
             <span className="list-name ">{item.name}</span>

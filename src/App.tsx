@@ -1,4 +1,4 @@
-import { Layout, Breadcrumb } from "antd";
+import { Layout } from "antd";
 import { useState } from "react";
 import { UserProfile, FileList, TabList } from "./components";
 import SimpleMDE from "react-simplemde-editor";
@@ -6,7 +6,7 @@ import "easymde/dist/easymde.min.css";
 import "./App.scss";
 import "antd/dist/antd.css";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const App = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
@@ -24,7 +24,7 @@ const App = () => {
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <UserProfile />
-        <FileList />
+        <FileList isShowSearch={!collapsed} />
       </Sider>
       <Layout className="site-layout">
         <Content>
