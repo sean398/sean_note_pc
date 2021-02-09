@@ -1,6 +1,8 @@
 import { Layout, Breadcrumb } from "antd";
 import { useState } from "react";
 import { UserProfile, FileList, TabList } from "./components";
+import SimpleMDE from "react-simplemde-editor";
+import "easymde/dist/easymde.min.css";
 import "./App.scss";
 import "antd/dist/antd.css";
 
@@ -8,10 +10,16 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const App = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("");
 
   const onCollapse = () => {
     setCollapsed(!collapsed);
   };
+
+  const handleMDEChange = (value: string) => {
+    setValue(value);
+  };
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -21,16 +29,13 @@ const App = () => {
       <Layout className="site-layout">
         <Content>
           <TabList />
-          <div
-            className="site-layout-background"
-            style={{ padding: 24, minHeight: 360 }}
-          >
-            Bill is a cat.
-          </div>
+          <SimpleMDE
+            value={value}
+            onChange={handleMDEChange}
+            options={{ minHeight: "650px" }}
+          />
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        <Footer></Footer>
       </Layout>
     </Layout>
   );
