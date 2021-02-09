@@ -1,0 +1,22 @@
+.sn-user-profile-warpper {
+  padding: 30px 20px;
+  .user-detail-main {
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    .user-photo {
+      width: 30px;
+    }
+    .user-name-wrapper {
+      flex: 1;
+      .user-name {
+        flex: 1;
+        padding: 0 10px;
+      }
+      .show-more-icon {
+        width: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+}

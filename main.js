@@ -13,8 +13,8 @@ app.on('ready', () => {
 
     mainWindow = new AppWindow(
         {
-            width: 1024,
-            height: 700
+            width: 1200,
+            height: 900
         },
         urlLocation
     );
