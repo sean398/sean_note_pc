@@ -1,9 +1,12 @@
 const { app} = require('electron');
 const isDev = require('electron-is-dev');
 const { join } = require('path');
+const store = require('electron-store')
 const AppWindow = require('./src/AppWindow');
 
 let mainWindow;
+
+store.initRenderer()
 
 app.on('ready', () => {
     const urlLocation = isDev

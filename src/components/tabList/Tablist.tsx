@@ -1,12 +1,17 @@
-import mockData from "../../mock/filelist.json";
 import { FileMarkdownOutlined, CloseOutlined } from "@ant-design/icons";
 
 import { useState } from "react";
 import classnames from "classnames";
 import "./_tablist.scss";
 
-const TabList = () => {
-  const { list } = mockData;
+interface ITabList {
+  list: any[];
+  onTabClick: () => void;
+}
+
+const TabList = (props: ITabList) => {
+  const { list } = props;
+  const { onTabClick } = props;
   const [activeId, setActiveId] = useState(list[0].id);
 
   const handleTabClick = (id: number, e: any) => {
@@ -14,7 +19,7 @@ const TabList = () => {
       //鼠标中建 delete
       return;
     }
-
+    onTabClick();
     setActiveId(id);
   };
 

@@ -1916,6 +1916,11 @@
   "resolved" "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz"
   "version" "0.0.29"
 
+"@types/lodash@^4.14.168":
+  "integrity" "sha1-/iRjLnm3rePxMoka//hsql5c4Ag="
+  "resolved" "https://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.168.tgz"
+  "version" "4.14.168"
+
 "@types/marked@^0.7.4":
   "integrity" "sha1-YHaFZpuxu94jALxYukNIbLvuHwo="
   "resolved" "https://registry.npm.taobao.org/@types/marked/download/@types/marked-0.7.4.tgz"
@@ -2018,6 +2023,11 @@
   "version" "3.11.1"
   dependencies:
     "source-map" "^0.6.1"
+
+"@types/uuid@^8.3.0":
+  "integrity" "sha1-IVwjHf9zbVupJBDm1gIFDM5+Jz8="
+  "resolved" "https://registry.npm.taobao.org/@types/uuid/download/@types/uuid-8.3.0.tgz?cache=0&sync_timestamp=1613385796340&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fuuid%2Fdownload%2F%40types%2Fuuid-8.3.0.tgz"
+  "version" "8.3.0"
 
 "@types/webpack-sources@*":
   "integrity" "sha512-LXn/oYIpBeucgP1EIJbKQ2/4ZmpvRl+dlrFdX7+94SKRUV3Evy3FsfMZY318vGhkWUS5MPhtOM3w1/hCOAOXcg=="
@@ -2392,6 +2402,13 @@
   "resolved" "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.1.tgz"
   "version" "1.0.1"
 
+"ajv-formats@^1.5.1":
+  "integrity" "sha1-DzAbGzhGGC8iTMVj/AoDLar7fas="
+  "resolved" "https://registry.npm.taobao.org/ajv-formats/download/ajv-formats-1.5.1.tgz"
+  "version" "1.5.1"
+  dependencies:
+    "ajv" "^7.0.0"
+
 "ajv-keywords@^3.1.0", "ajv-keywords@^3.4.1", "ajv-keywords@^3.5.2":
   "integrity" "sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ=="
   "resolved" "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.5.2.tgz"
@@ -2407,10 +2424,30 @@
     "json-schema-traverse" "^0.4.1"
     "uri-js" "^4.2.2"
 
+"ajv@^7.0.0":
+  "integrity" "sha1-Hms3pFQCH6mUFxPzi5UvwcjTKoQ="
+  "resolved" "https://registry.npm.taobao.org/ajv/download/ajv-7.1.1.tgz"
+  "version" "7.1.1"
+  dependencies:
+    "fast-deep-equal" "^3.1.1"
+    "json-schema-traverse" "^1.0.0"
+    "require-from-string" "^2.0.2"
+    "uri-js" "^4.2.2"
+
 "ajv@^7.0.2":
   "integrity" "sha512-xzzzaqgEQfmuhbhAoqjJ8T/1okb6gAzXn/eQRNpAN1AEUoHJTNF9xCDRTtf/s3SKldtZfa+RJeTs+BQq+eZ/sw=="
   "resolved" "https://registry.yarnpkg.com/ajv/-/ajv-7.0.4.tgz"
   "version" "7.0.4"
+  dependencies:
+    "fast-deep-equal" "^3.1.1"
+    "json-schema-traverse" "^1.0.0"
+    "require-from-string" "^2.0.2"
+    "uri-js" "^4.2.2"
+
+"ajv@^7.0.3":
+  "integrity" "sha1-Hms3pFQCH6mUFxPzi5UvwcjTKoQ="
+  "resolved" "https://registry.npm.taobao.org/ajv/download/ajv-7.1.1.tgz"
+  "version" "7.1.1"
   dependencies:
     "fast-deep-equal" "^3.1.1"
     "json-schema-traverse" "^1.0.0"
@@ -2833,6 +2870,11 @@
   "integrity" "sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg=="
   "resolved" "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz"
   "version" "2.1.2"
+
+"atomically@^1.7.0":
+  "integrity" "sha1-wHoEWEMuptvJo1Bv/6QktIvMqv4="
+  "resolved" "https://registry.npm.taobao.org/atomically/download/atomically-1.7.0.tgz"
+  "version" "1.7.0"
 
 "autoprefixer@^9.6.1":
   "integrity" "sha512-XrvP4VVHdRBCdX1S3WXVD8+RyG9qeb1D5Sn1DeLiG2xfSpzellk5k54xbUERJ3M5DggQxes39UGOTP8CFrEGbg=="
@@ -3992,6 +4034,23 @@
     "tree-kill" "^1.2.2"
     "yargs" "^13.3.0"
 
+"conf@^9.0.0":
+  "integrity" "sha1-lDWJYCsc4nTZI0JlMUM2ppiXK8U="
+  "resolved" "https://registry.npm.taobao.org/conf/download/conf-9.0.2.tgz"
+  "version" "9.0.2"
+  dependencies:
+    "ajv" "^7.0.3"
+    "ajv-formats" "^1.5.1"
+    "atomically" "^1.7.0"
+    "debounce-fn" "^4.0.0"
+    "dot-prop" "^6.0.1"
+    "env-paths" "^2.2.0"
+    "json-schema-typed" "^7.0.3"
+    "make-dir" "^3.1.0"
+    "onetime" "^5.1.2"
+    "pkg-up" "^3.1.0"
+    "semver" "^7.3.4"
+
 "config-chain@^1.1.11":
   "integrity" "sha1-D96NCRIA616AjK8l/mGMAvSOTvo="
   "resolved" "https://registry.npm.taobao.org/config-chain/download/config-chain-1.1.12.tgz"
@@ -4521,6 +4580,13 @@
   "resolved" "https://registry.npm.taobao.org/dayjs/download/dayjs-1.10.4.tgz"
   "version" "1.10.4"
 
+"debounce-fn@^4.0.0":
+  "integrity" "sha1-7XbSBtilDmDeDdZtSU2Cg1/+Ycc="
+  "resolved" "https://registry.npm.taobao.org/debounce-fn/download/debounce-fn-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "mimic-fn" "^3.0.0"
+
 "debug@^2.2.0":
   "integrity" "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="
   "resolved" "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz"
@@ -4884,6 +4950,13 @@
   dependencies:
     "is-obj" "^2.0.0"
 
+"dot-prop@^6.0.1":
+  "integrity" "sha1-/CazzxQrnlm3Tb057WbOYgxoEIM="
+  "resolved" "https://registry.npm.taobao.org/dot-prop/download/dot-prop-6.0.1.tgz"
+  "version" "6.0.1"
+  dependencies:
+    "is-obj" "^2.0.0"
+
 "dotenv-expand@^5.1.0", "dotenv-expand@5.1.0":
   "integrity" "sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA=="
   "resolved" "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz"
@@ -4986,6 +5059,14 @@
     "fs-extra" "^9.0.1"
     "lazy-val" "^1.0.4"
     "mime" "^2.4.6"
+
+"electron-store@^7.0.2":
+  "integrity" "sha1-5FpU0JLqQ+KpU2Ge1Ec4k9RI398="
+  "resolved" "https://registry.npm.taobao.org/electron-store/download/electron-store-7.0.2.tgz"
+  "version" "7.0.2"
+  dependencies:
+    "conf" "^9.0.0"
+    "type-fest" "^0.20.2"
 
 "electron-to-chromium@^1.3.564", "electron-to-chromium@^1.3.649":
   "integrity" "sha512-85J5D0Ksxjq2MIHfgwOURRej72UMlexbaa7t+oKTJan3Pa/RBE8vJ4/JzwaQjLCElPvd0XeLWi7+xYTVrq96aA=="
@@ -7046,8 +7127,8 @@
   "version" "1.0.1"
 
 "is-obj@^2.0.0":
-  "integrity" "sha512-drqDG3cbczxxEJRoOXcOjtdp1J/lyp1mNn0xaznRs8+muBhgQcrnbspox5X5fOw0HnMnbfDzvnEMEtqDEJEo8w=="
-  "resolved" "https://registry.yarnpkg.com/is-obj/-/is-obj-2.0.0.tgz"
+  "integrity" "sha1-Rz+wXZc3BeP9liBUUBjKjiLvSYI="
+  "resolved" "https://registry.npm.taobao.org/is-obj/download/is-obj-2.0.0.tgz"
   "version" "2.0.0"
 
 "is-path-cwd@^2.0.0":
@@ -7810,9 +7891,14 @@
   "version" "0.4.1"
 
 "json-schema-traverse@^1.0.0":
-  "integrity" "sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug=="
-  "resolved" "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz"
+  "integrity" "sha1-rnvLNlard6c7pcSb9lTzjmtoYOI="
+  "resolved" "https://registry.npm.taobao.org/json-schema-traverse/download/json-schema-traverse-1.0.0.tgz?cache=0&sync_timestamp=1608000211395&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjson-schema-traverse%2Fdownload%2Fjson-schema-traverse-1.0.0.tgz"
   "version" "1.0.0"
+
+"json-schema-typed@^7.0.3":
+  "integrity" "sha1-I/9IG4tO680soSO0+gQJ5mRpotk="
+  "resolved" "https://registry.npm.taobao.org/json-schema-typed/download/json-schema-typed-7.0.3.tgz"
+  "version" "7.0.3"
 
 "json-schema@0.2.3":
   "integrity" "sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM="
@@ -8131,8 +8217,8 @@
   "version" "4.5.0"
 
 "lodash@^4.0.0", "lodash@^4.17.10", "lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.19", "lodash@^4.17.20", "lodash@^4.17.5", "lodash@>=3.5 <5", "lodash@~4.17.10":
-  "integrity" "sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA=="
-  "resolved" "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz"
+  "integrity" "sha1-tEqbYpe8tpjxxRo1RaKzs2jVnFI="
+  "resolved" "https://registry.npm.taobao.org/lodash/download/lodash-4.17.20.tgz"
   "version" "4.17.20"
 
 "loglevel@^1.6.8":
@@ -8206,7 +8292,7 @@
     "pify" "^4.0.1"
     "semver" "^5.6.0"
 
-"make-dir@^3.0.0", "make-dir@^3.0.2":
+"make-dir@^3.0.0", "make-dir@^3.0.2", "make-dir@^3.1.0":
   "integrity" "sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw=="
   "resolved" "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz"
   "version" "3.1.0"
@@ -8410,6 +8496,11 @@
   "integrity" "sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg=="
   "resolved" "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz"
   "version" "2.1.0"
+
+"mimic-fn@^3.0.0":
+  "integrity" "sha1-ZXVRRbvz42lUuUnBZFBCdFHVynQ="
+  "resolved" "https://registry.npm.taobao.org/mimic-fn/download/mimic-fn-3.1.0.tgz"
+  "version" "3.1.0"
 
 "mimic-response@^1.0.0", "mimic-response@^1.0.1":
   "integrity" "sha1-SSNTiHju9CBjy4o+OweYeBSHqxs="
@@ -8986,7 +9077,7 @@
   dependencies:
     "wrappy" "1"
 
-"onetime@^5.1.0":
+"onetime@^5.1.0", "onetime@^5.1.2":
   "integrity" "sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg=="
   "resolved" "https://registry.yarnpkg.com/onetime/-/onetime-5.1.2.tgz"
   "version" "5.1.2"
@@ -9407,7 +9498,7 @@
   dependencies:
     "find-up" "^4.0.0"
 
-"pkg-up@3.1.0":
+"pkg-up@^3.1.0", "pkg-up@3.1.0":
   "integrity" "sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA=="
   "resolved" "https://registry.yarnpkg.com/pkg-up/-/pkg-up-3.1.0.tgz"
   "version" "3.1.0"
@@ -11648,6 +11739,13 @@
   dependencies:
     "lru-cache" "^6.0.0"
 
+"semver@^7.3.4":
+  "integrity" "sha1-J6qn0uTKdkUvmNOt0JOnLJQ+3Jc="
+  "resolved" "https://registry.npm.taobao.org/semver/download/semver-7.3.4.tgz?cache=0&sync_timestamp=1606853731020&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsemver%2Fdownload%2Fsemver-7.3.4.tgz"
+  "version" "7.3.4"
+  dependencies:
+    "lru-cache" "^6.0.0"
+
 "semver@7.0.0":
   "integrity" "sha512-+GB6zVA9LWh6zovYQLALHwv5rb2PHGlJi3lfiqIHxR0uuwCgefcOJc59v9fv1w8GbStwxuuqqAjI9NMAOOgq1A=="
   "resolved" "https://registry.yarnpkg.com/semver/-/semver-7.0.0.tgz"
@@ -12812,6 +12910,11 @@
   "integrity" "sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA=="
   "resolved" "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz"
   "version" "0.8.1"
+
+"type-fest@^0.20.2":
+  "integrity" "sha1-G/IH9LKPkVg2ZstfvTJ4hzAc1fQ="
+  "resolved" "https://registry.npm.taobao.org/type-fest/download/type-fest-0.20.2.tgz?cache=0&sync_timestamp=1613402684038&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftype-fest%2Fdownload%2Ftype-fest-0.20.2.tgz"
+  "version" "0.20.2"
 
 "type-fest@^0.3.1":
   "integrity" "sha512-cUGJnCdr4STbePCgqNFbpVNCepa+kAVohJs1sLhxzdH+gnEoOd8VhbYa7pD3zZYGiURWM2xzEII3fQcRizDkYQ=="

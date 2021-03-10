@@ -1,35 +1,83 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, Button, Input } from "antd";
 import { FileMarkdownOutlined, FileAddOutlined } from "@ant-design/icons";
-import mockData from "../../mock/filelist.json";
+import { v4 as uuid } from "uuid";
+import _ from "lodash";
+import FileNameItem from "../addFileItem/add-file-item.component";
 import "./_fileList.scss";
-const { SubMenu } = Menu;
+import Item from "antd/lib/list/Item";
+
 const { Search } = Input;
 
 interface IFileList {
+  list: any[];
   isShowSearch: boolean;
+  onFileClick: () => void;
+  udpateStoreValue: (newlist: any[]) => void;
 }
 
 const FileList = (props: IFileList) => {
-  const { category, list } = mockData;
-  const { isShowSearch } = props;
-
-  const [showList, setShowList] = useState(list);
-
-  const unAssignedList = showList.filter((item) => !item.category);
+  const { isShowSearch, onFileClick, list, udpateStoreValue } = props;
+  const [editTabId, setEditTabId] = useState<string>("");
+  const [showList, setShowList] = useState<any[]>(list);
 
   const onSearch = (value: string) => {
     const key = value.trim().toLocaleLowerCase();
-    if (!key) {
-      setShowList(list);
-      return;
-    }
-    const newSearchedList = list.filter(
-      (item) =>
-        item.name.toLocaleLowerCase().includes(key) ||
-        (item.category || "").toLocaleLowerCase().includes(key)
+    // if (!key) {
+    //   setShowList(list);
+    //   return;
+    // }
+    // const newSearchedList = list.filter(
+    //   (item) =>
+    //     item.name.toLocaleLowerCase().includes(key) ||
+    //     (item.category || "").toLocaleLowerCase().includes(key)
+    // );
+    // setShowList(newSearchedList);
+  };
+
+  const handleAddNewFile = () => {
+    const newList = _.clone(showList);
+
+    newList.push({
+      name: "",
+      id: uuid(),
+      isNew: true,
+    });
+
+    setShowList(newList);
+
+    // newList.push({
+    //   name: '',
+    //   id: uuid(),
+    //   category: null,
+    // });
+
+    // setFileLists(list);
+
+    // store.set("list", newList);
+
+    // setShowList(newList);
+
+    //generate new file in local document folder
+    // console.log(join(savedLocation, "sean_node_base", "test.md"));
+
+    // writeFile(join(savedLocation, "test.md"), "### Hello World");
+  };
+
+  const handleUpdateFilename = (id: string, newName: string) => {
+    const newFileList = showList.map((list) => {
+      if (list.id === id) {
+        list.name = newName;
+      }
+      return list;
+    });
+    udpateStoreValue(newFileList);
+    console.log(
+      "🚀 ~ file: FileList.tsx ~ line 102 ~ handleUpdateFilename ~ newFileList",
+      newFileList
     );
-    setShowList(newSearchedList);
+
+    setShowList(newFileList);
   };
 
   return (
@@ -41,6 +89,7 @@ const FileList = (props: IFileList) => {
             type="primary"
             shape="round"
             icon={<FileAddOutlined />}
+            onClick={handleAddNewFile}
             size="middle"
           >
             Add File
@@ -54,37 +103,17 @@ const FileList = (props: IFileList) => {
         </>
       )}
       <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-        {category.length > 0 &&
-          category.map((cate) => {
-            const filterList = showList.filter(
-              (item) => item.category === cate
-            );
-            return (
-              <SubMenu key={`${cate}file_list_category`} title={cate}>
-                {filterList.map((item) => {
-                  return (
-                    <Menu.Item
-                      key={item.id + "file_list"}
-                      icon={<FileMarkdownOutlined />}
-                    >
-                      {item.name}
-                    </Menu.Item>
-                  );
-                })}
-              </SubMenu>
-            );
-          })}
-        {unAssignedList.length > 0 &&
-          unAssignedList.map((item) => {
-            return (
-              <Menu.Item
-                key={item.id + "file_list"}
-                icon={<FileMarkdownOutlined />}
-              >
-                {item.name}
-              </Menu.Item>
-            );
-          })}
+        {showList.map((item) => {
+          return (
+            <FileNameItem
+              key={item.id}
+              id={item.id}
+              defaultLabel={item.name}
+              defaultEdit={item.isNew}
+              updateFilename={handleUpdateFilename}
+            />
+          );
+        })}
       </Menu>
     </div>
   );
