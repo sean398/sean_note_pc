@@ -4,10 +4,13 @@ import { FileMarkdownOutlined, FileAddOutlined } from "@ant-design/icons";
 import { v4 as uuid } from "uuid";
 import _ from "lodash";
 import FileNameItem from "../addFileItem/add-file-item.component";
+import fileHelper from "../../utils/fileHelper";
 import "./_fileList.scss";
-import Item from "antd/lib/list/Item";
 
 const { Search } = Input;
+
+const { join } = window.require("path");
+const { remote } = window.require("electron");
 
 interface IFileList {
   list: any[];
@@ -20,6 +23,7 @@ const FileList = (props: IFileList) => {
   const { isShowSearch, onFileClick, list, udpateStoreValue } = props;
   const [editTabId, setEditTabId] = useState<string>("");
   const [showList, setShowList] = useState<any[]>(list);
+  const savedLocation = remote.app.getPath("documents");
 
   const onSearch = (value: string) => {
     const key = value.trim().toLocaleLowerCase();
@@ -37,47 +41,40 @@ const FileList = (props: IFileList) => {
 
   const handleAddNewFile = () => {
     const newList = _.clone(showList);
-
     newList.push({
       name: "",
       id: uuid(),
       isNew: true,
     });
-
     setShowList(newList);
+  };
 
-    // newList.push({
-    //   name: '',
-    //   id: uuid(),
-    //   category: null,
-    // });
-
-    // setFileLists(list);
-
-    // store.set("list", newList);
-
-    // setShowList(newList);
-
-    //generate new file in local document folder
-    // console.log(join(savedLocation, "sean_node_base", "test.md"));
-
-    // writeFile(join(savedLocation, "test.md"), "### Hello World");
+  const handleCheckRepeat = (id: string, value: string) => {
+    return (
+      showList.findIndex((item) => item.id !== id && item.name === value) !== -1
+    );
   };
 
   const handleUpdateFilename = (id: string, newName: string) => {
-    const newFileList = showList.map((list) => {
-      if (list.id === id) {
-        list.name = newName;
-      }
-      return list;
-    });
-    udpateStoreValue(newFileList);
-    console.log(
-      "🚀 ~ file: FileList.tsx ~ line 102 ~ handleUpdateFilename ~ newFileList",
-      newFileList
-    );
+    const newfileList = _.clone(showList);
+    const index = newfileList.findIndex((item) => item.id === id);
+    if (index === -1) return;
+    const isNew = newfileList[index].isNew;
+    if (isNew) {
+      fileHelper.writeFile(join(savedLocation, `${newName}.md`), "");
+    } else {
+      const oldPath = join(savedLocation, `${newfileList[index].name}.md`);
+      const newPath = join(savedLocation, `${newName}.md`);
+      fileHelper.renameFile(oldPath, newPath);
+    }
+    newfileList[index] = { ...newfileList[index], isNew: false, name: newName };
+    udpateStoreValue(newfileList);
+    setShowList(newfileList);
+  };
 
-    setShowList(newFileList);
+  const handleDropNewItem = (id: string) => {
+    const newfileList = showList.filter((item) => item.id !== id);
+    setShowList(newfileList);
   };
 
   return (
@@ -108,9 +105,12 @@ const FileList = (props: IFileList) => {
             <FileNameItem
               key={item.id}
               id={item.id}
+              isNew={item.isNew}
+              checkIsRepeat={handleCheckRepeat}
               defaultLabel={item.name}
               defaultEdit={item.isNew}
               updateFilename={handleUpdateFilename}
+              onDropNewItem={handleDropNewItem}
             />
           );
         })}

@@ -1,12 +1,17 @@
 .custom-file-name-item-wrapper {
-    .show-name-wrapper{
-        height: 32px;
-        line-height: 32px;
-        padding-left: 15px;
-        font-size: 16px;
-        box-sizing: border-box;
-    }
-    input {
-        padding-left: 30px;
-    }
+  .show-name-wrapper {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  input {
+    display: block;
+    padding-left: 30px;
+  }
+  .input-alert-message {
+    line-height: 32px;
+    font-size: 16px;
+  }
 }
