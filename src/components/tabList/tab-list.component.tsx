@@ -2,7 +2,7 @@ import { FileMarkdownOutlined, CloseOutlined } from "@ant-design/icons";
 
 import { useState } from "react";
 import classnames from "classnames";
-import "./_tablist.scss";
+import "./tab-list.style.scss";
 
 interface ITabList {
   list: any[];

@@ -1,3 +1,3 @@
-export {default as TabList} from "./tabList/Tablist"
-export {default as FileList} from "./fileList/FileList"
-export {default as UserProfile} from "./userProfile/UserProfile"
+export {default as TabList} from "./tabList/tab-list.component"
+export {default as FileList} from "./fileList/file-list.component"
+export {default as UserProfile} from "./userProfile/user-profile.component"

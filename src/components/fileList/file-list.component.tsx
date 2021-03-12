@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Menu, Button, Input } from "antd";
-import { FileMarkdownOutlined, FileAddOutlined } from "@ant-design/icons";
+import { FileAddOutlined } from "@ant-design/icons";
 import { v4 as uuid } from "uuid";
 import _ from "lodash";
 import FileNameItem from "../addFileItem/add-file-item.component";
@@ -9,7 +9,7 @@ import {
   IFileListItem,
   IFileListEditingItem,
 } from "../../interface/file-list.interface";
-import "./_fileList.scss";
+import "./file-list.style.scss";
 
 const { Search } = Input;
 
@@ -19,12 +19,13 @@ const { remote } = window.require("electron");
 interface IFileList {
   list: IFileListItem[];
   isShowSearch: boolean;
-  onFileClick: () => void;
+  onFileClick: (id: string) => void;
   udpateStoreValue: (newlist: any[]) => void;
 }
 
 const FileList = (props: IFileList) => {
   const { isShowSearch, onFileClick, list, udpateStoreValue } = props;
+  const [activeFileId, setActiveFileId] = useState<string>("");
   const [showList, setShowList] = useState<IFileListEditingItem[]>(
     list.map((item) => ({ ...item, isNew: false }))
   );
@@ -50,7 +51,7 @@ const FileList = (props: IFileList) => {
       name: "",
       id: uuid(),
       isNew: true,
-      location: join(savedLocation, "${new-file}.md"),
+      location: join(savedLocation, ".md"),
     });
     setShowList(newList);
   };
@@ -88,6 +89,11 @@ const FileList = (props: IFileList) => {
     setShowList(newfileList);
   };
 
+  const handleFileClick = (id: string) => {
+    setActiveFileId(id);
+    onFileClick(id);
+  };
+
   return (
     <div className="sn-file-list-wrapper">
       {isShowSearch && (
@@ -117,6 +123,8 @@ const FileList = (props: IFileList) => {
               key={item.id}
               id={item.id}
               isNew={item.isNew}
+              isActive={activeFileId === item.id}
+              onFileClick={handleFileClick}
               checkIsRepeat={handleCheckRepeat}
               defaultLabel={item.name}
               defaultEdit={item.isNew}

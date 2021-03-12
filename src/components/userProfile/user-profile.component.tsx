@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Avatar, Image, Modal } from "antd";
 import { user_detail } from "../../mock/userprofile";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import "./_userProfile.scss";
+import "./user-profile.style.scss";
 
-const UserProfile = () => {
+interface IUserProfile {
+  isShow: boolean;
+}
+
+const UserProfile: React.FC<IUserProfile> = ({ isShow }) => {
   const [isShowDetail, setIsShowDetail] = useState<boolean>(false);
 
   const handleShowDetail = () => {
@@ -21,16 +25,18 @@ const UserProfile = () => {
             }
           />
         </div>
-        <div className="user-name-wrapper">
-          <span className="user-name sn-font-16">{user_detail.name}</span>
-          <span className="show-more-icon">
-            {isShowDetail ? (
-              <UpOutlined onClick={handleShowDetail} />
-            ) : (
-              <DownOutlined onClick={handleShowDetail} />
-            )}
-          </span>
-        </div>
+        {isShow && (
+          <div className="user-name-wrapper">
+            <span className="user-name sn-font-16">{user_detail.name}</span>
+            <span className="show-more-icon">
+              {isShowDetail ? (
+                <UpOutlined onClick={handleShowDetail} />
+              ) : (
+                <DownOutlined onClick={handleShowDetail} />
+              )}
+            </span>
+          </div>
+        )}
       </div>
 
       <Modal

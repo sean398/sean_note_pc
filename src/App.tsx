@@ -13,9 +13,7 @@ const Store = window.require("electron-store");
 const store = new Store({ name: "Files Data" });
 
 const App = () => {
-  const [fileLists, setFileLists] = useState<IFileListItem[]>(
-    store.get("list") || []
-  );
+  const fileLists: IFileListItem[] = store.get("list") || [];
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [mdeValue, setValue] = useState<string>("123");
   //clear store
@@ -26,13 +24,10 @@ const App = () => {
   };
 
   const handleMDEChange = (value: string) => {
-    console.log(value);
-
     setValue(value);
   };
 
   const handleFileCLick = () => {
-    console.log("reset");
     const data = new Date().getTime();
     setValue(data + "");
   };
@@ -49,7 +44,7 @@ const App = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <UserProfile />
+        <UserProfile isShow={!collapsed} />
         <FileList
           list={fileLists}
           isShowSearch={!collapsed}

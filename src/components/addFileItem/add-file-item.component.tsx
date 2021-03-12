@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Input } from "antd";
 import { FileMarkdownOutlined, FileAddOutlined } from "@ant-design/icons";
+import classnames from "classnames";
 import "./add-file-item.style.scss";
 
 interface IFileNameItem {
   id: string;
   isNew: boolean;
+  isActive: boolean;
   defaultLabel: string;
   defaultEdit?: boolean;
+  onFileClick: (id: string) => void;
   onDropNewItem: (id: string) => void;
   updateFilename: (id: string, name: string) => void;
   checkIsRepeat: (id: string, value: string) => boolean;
@@ -16,8 +19,10 @@ interface IFileNameItem {
 const FileNameItem: React.FC<IFileNameItem> = ({
   id,
   isNew,
+  isActive,
   defaultEdit,
   defaultLabel,
+  onFileClick,
   onDropNewItem,
   updateFilename,
   checkIsRepeat,
@@ -63,6 +68,11 @@ const FileNameItem: React.FC<IFileNameItem> = ({
     setIsEdit(false);
   };
 
+  const handleFileClick = () => {
+    if (isActive) return;
+    onFileClick(id);
+  };
+
   return (
     <div className="custom-file-name-item-wrapper">
       {isEdit ? (
@@ -83,7 +93,13 @@ const FileNameItem: React.FC<IFileNameItem> = ({
           )}
         </div>
       ) : (
-        <div className="show-name-wrapper" onDoubleClick={handleChangeFileName}>
+        <div
+          className={classnames("show-name-wrapper", {
+            active: isActive,
+          })}
+          onClick={handleFileClick}
+          onDoubleClick={handleChangeFileName}
+        >
           <FileMarkdownOutlined />
           <span>{name}</span>
         </div>

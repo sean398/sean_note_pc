@@ -5,6 +5,10 @@
     padding-left: 15px;
     font-size: 16px;
     box-sizing: border-box;
+    cursor: pointer;
+    &.active {
+      background-color: grey;
+    }
   }
   input {
     display: block;
